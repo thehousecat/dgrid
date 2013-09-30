@@ -40,10 +40,10 @@ function dataFromValue(value, oldValue){
 // intermediary frontend to dataFromValue for HTML and widget editors
 function dataFromEditor(column, cmp){
 	if(typeof cmp.get == "function"){ // widget
-		return dataFromValue(cmp.get("value"));
+		return dataFromValue(cmp.get("value"), cmp._dgridLastValue);
 	}else{ // HTML input
 		return dataFromValue(
-			cmp[cmp.type == "checkbox" || cmp.type == "radio"  ? "checked" : "value"]);
+			cmp[cmp.type == "checkbox" || cmp.type == "radio"  ? "checked" : "value"], cmp._dgridLastValue);
 	}
 }
 
